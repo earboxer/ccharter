@@ -13,7 +13,10 @@ var ChordCharter = {
 	
 		var origin = { x: originX, y: originY };
 		var props = { width: 50, height: 60 };
-	
+
+		// Reset previous path that may have been created.
+		ctx.beginPath();
+
 		// horizontals
 	
 		for (counter in new Array(0, 1, 2, 3, 4)) {
