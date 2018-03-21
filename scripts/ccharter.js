@@ -6,7 +6,9 @@ var ChordCharter = {
 			name: chordName,
 			frets: chordFrets
 		};
-	
+
+		fretsCount = chord.frets.length;
+
 		var c=document.getElementById(canvasId);
 		var ctx=c.getContext("2d");
 		ctx.fillStyle="#000";
@@ -26,10 +28,9 @@ var ChordCharter = {
 		}
 	
 		// verts
-	
-		for (counter in new Array(0, 1, 2, 3, 4, 5)) {
-			ctx.moveTo(origin.x + (counter * props.width / 5), origin.y);
-			ctx.lineTo(origin.x + (counter * props.width / 5), origin.y + props.height);
+		for ( i = 0; i < fretsCount; i++ ) {
+			ctx.moveTo(origin.x + (i * props.width / (fretsCount - 1)), origin.y);
+			ctx.lineTo(origin.x + (i * props.width / (fretsCount - 1)), origin.y + props.height);
 			ctx.stroke();
 		}
 	
@@ -73,7 +74,7 @@ var ChordCharter = {
 		for (j=0; j < chord.frets.length; j++) {
 	
 			ctx.alignText = "left";
-			ctx.fillText(chord.frets.charAt(j), origin.x + (i * props.width / 5), origin.y + props.height + 12);
+			ctx.fillText(chord.frets.charAt(j), origin.x + (i * props.width / (fretsCount - 1)), origin.y + props.height + 12);
 	
 			if (chord.frets.charAt(j) == 0) {
 	
@@ -82,7 +83,7 @@ var ChordCharter = {
 	
 			} else {
 				ctx.beginPath();
-				ctx.arc(origin.x + (i * props.width / 5), origin.y - 7.5 + (15 * (chord.frets.charAt(j) - baseFret)), dotsize, 0, Math.PI*2,true);
+				ctx.arc(origin.x + (i * props.width / (fretsCount -1)), origin.y - 7.5 + (15 * (chord.frets.charAt(j) - baseFret)), dotsize, 0, Math.PI*2,true);
 				ctx.closePath();
 				ctx.fill();
 			}
