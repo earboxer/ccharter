@@ -1,0 +1,10 @@
+{
+  "name": "ccharter",
+  "version": "1.0.1",
+  "description": "Create simple chord diagrams on the web",
+  "main": "scripts/ccharter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mzarillo"
+}
